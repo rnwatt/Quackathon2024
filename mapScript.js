@@ -80,3 +80,99 @@ anychart.onDocumentReady(function () {
         )
         .title({ useHtml: true });
     }
+
+    //how to stuff
+    function howToOn() {
+      document.getElementById("howTo").style.display = "block";
+    }
+    
+    function howToOff() {
+      document.getElementById("howTo").style.display = "none";
+    }
+
+    //game shit that makes the game do the game
+
+    //can be action or movement
+    var phase = "Action";
+
+    //fix to whatever
+    var currMoney = 1000;
+
+    function setup (){
+      //place the bandit or something here or we can hard code it
+    }
+
+function phaseSwitch (){
+  if (phase == "Action")
+  {
+    phase = "Movement";
+    //something here
+  }
+  else {
+    phase = "Action";
+    //something here
+  }
+}
+
+//money tracker/lose check?
+function moneyTrack(){
+    if (currMoney > 0){
+      //lose screen
+    }
+    else {
+      return;
+    }
+}    
+
+//money gain
+function clean(){
+  //idk values can change
+  currMoney = currMoney + 10;
+  phaseSwitch(); 
+}
+
+
+// hint providor 
+function hint() {
+  currMoney = currMoney - 10;
+  moneyTrack();
+
+  //some hint bs here
+
+  phaseSwitch();
+}
+
+//movement shit
+function move() {
+  //lol figure it out asshole
+  winCheck();
+  phaseSwitch();
+} 
+
+//reset
+function reset() {
+  //maybe a 'are you sure here'
+  currMoney = 1000;
+  phase = "Action";
+  setup();
+}
+
+//location tracker
+function location () {
+  //bro idk my brain is FUCKED
+}
+
+//fish amount
+function fish() {
+  //calculates that hot cold thing and displays on the html what the fish is
+}
+
+//bandit movement
+function banditMove(){
+  //some sort of ai moving this boy and then checking if hes in the same area idk man
+}
+
+//win check
+function winCheck () {
+  //check if bandit and player are in the same city
+}
