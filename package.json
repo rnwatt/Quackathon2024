@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.3",
     "mongodb": "^6.4.0",
     "nodemon": "^3.1.0"
@@ -8,7 +9,6 @@
   "description": "Quackathon 2024",
   "version": "1.0.0",
   "main": "app.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

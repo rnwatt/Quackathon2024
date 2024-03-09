@@ -1,10 +1,12 @@
-import express from 'express';
-
 // Connection
+const express = require('express');
+const cors = require('cors');
+
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://kasterune:awUytJIxf9r0yrCB@quackathondataset.8crlzqr.mongodb.net/?retryWrites=true&w=majority&appName=QuackathonDataset";
 const app = express();
-const PORT = 3333;
+const PORT = 3000;
+
 app.use(express.urlencoded());
 
 // CORS 
@@ -43,14 +45,14 @@ module.exports = {
 
 // Defining routes
 const routes = express.Router();
-routes.route("/atm").get(async function (req, res) {
+routes.route('/api/atm').get(async function (req, res) {
   const dbConnect = dbo.getDb();
 
   dbConnect.collection("quackathonCollection")
   .find({}).limit(50)
   .toArray(function (err, result) {
     if (err) {
-      res.status(400).send("Error fetching.");
+      res.status(400).send(err);
     } else {
       res.json(result);
     }
