@@ -10,21 +10,84 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
   <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
   <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+
+  <!--Currently broken, fix later for marginal improvement-->
+  <link rel="icon" type="image/x-icon" href="/NCRLogo.png">
+
+  <link rel="stylesheet" href="./style.css">
+
   <style type="text/css">
 
     html,
     body,
     #container {
-      width: 100%;
+      width: 75%;
       height: 100%;
       margin: 0;
-      padding: 0;
+      padding-right: 30px;
+      float: left;
     }
+
+    #howTo{
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 2;
+    cursor: pointer;
+  }
   
+  #text{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    font-size: 20px;
+    color: white;
+    
+  }
+  
+  #actionButtons{
+    display: block;
+  }
+
 </style>
+
+<title>NCR Fish Bandit</title>
   </head>
+
   <body>
+<!-- How to overlay FIX money starting amount-->
+<div id="howTo" onclick="howToOff()">
+  <div id="text"> HOW TO PLAY:<br/><br/>
+    The Fish bandit has hit local ATMs, taping fish onto ATMs and making them non-assessable (and smelly!) It's up to you to catch the dastardly devil by following the trail of fish they've left behind.<br/><br/> You have a budget of **MONEY AMOUNT HERE** to catch the bandit. You can tell how close the Bandit is to you by the amount of fish taped to local ATMs, the more fish, the closer you are. The game has two phases, action phase and movement phase. <br/><br/> ACTION PHASE: Choose between Cleaning up ATMs for **MONEY AMOUNT HERE** or paying **MONEY AMOUNT HERE** to get a hint on where the Bandit will strike next. <br/><br/> MOVEMENT PHASE: Choose which city to investigate next, the further the city the more travel will cost. The Bandit will move to the next closest city they haven't visited yet If you move into the city the Bandit is in, or the Bandit is forced to move into you then you win!<br/><br/> Click anywhere to return to game</div>
+</div>
+
     <div id="container"></div>
   <script src="mapScript.js"></script>
+
+  <h1 id = "phase"> Action Phase </h1>
+
+  <div id="stats">
+    <h3>Current Location: </h3><p id="currCity"> NULL </p>
+    <h3>ATMs with Fish: </h3><p id="cityFish"> NULL </p>
+    <h3>Current Cash: </h3><p id="currMoney"> NULL</p>
+  </div>
+
+  <div id="actionButtons">
+    <button class="actionButtons">Clean Up ATMS</button> <p> Gain **MONEY HERE**</p>
+    <button class="actionButtons">Get Info</button> <p> Spend **MONEY HERE** for a hint</p>
+  </div>
+
+  <div id="buttons">
+      <button class="howToButt" onclick="howToOn()">HOW TO PLAY</button>
+      <button class="resetButt">Reset</button>
+  </div>
+
   </body>
 </html>

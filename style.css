@@ -1,0 +1,58 @@
+body {
+    background-color: #ddd; 
+}
+
+.PLEASE {
+    float: left;
+    margin: 5px;
+}
+.howToButt {
+   background-color: #004F2D;
+   stroke: none;
+   color: white;
+   border-radius: 8px;
+   padding: 10px;
+   transition-duration: 0.4s;
+   border-style: none;
+   width: 100px;
+    height: 50px;
+}
+
+.howToButt:hover {
+    background-color: #04AA6D; /* Green */
+    color: white;
+  }
+
+  .resetButt {
+    background-color: black;
+    stroke: none;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    transition-duration: 0.4s;
+    border-style: none;
+    width: 100px;
+    height: 50px;
+ }
+ 
+ .resetButt:hover {
+     background-color: #04AA6D; /* Green */
+     color: white;
+   }
+
+.actionButtons {
+    background-color: #05698b;
+    stroke: none;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    transition-duration: 0.4s;
+    border-style: none;
+    width: 100px;
+    height: 50px;
+ }
+ 
+ .actionButtons:hover {
+     background-color: #008CBA; /* Green */
+     color: white;
+   }
