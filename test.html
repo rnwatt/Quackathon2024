@@ -36,6 +36,10 @@
     display: block;
   }
 
+  #moveBox {
+    display: none;
+  }
+
 </style>
 
 <title>NCR Fish Bandit</title>
@@ -174,9 +178,14 @@
     <h3 id="currMoney">Current Cash: NULL </h3>
   </div>
 
+  <div id="moveBox">
+    <select id="moveOpt"><option>Select a Location to Move to</option></select>
+    <button class="actionButtons" onclick="move()"> Go </button>
+  </div>
+
   <div id="actionButtons">
-    <button class="actionButtons">Clean Up ATMS</button> <p> Gain 10£</p>
-    <button class="actionButtons">Get Info</button> <p> Spend 10£ for a hint</p>
+    <button class="actionButtons" onclick="clean()">Clean Up ATMS</button> <p> Gain 10£</p>
+    <button class="actionButtons" onclick="hint()">Get Info</button> <p> Spend 10£ for a hint</p>
   </div>
 
     <button class="howToButt" onclick="howToOn()">HOW TO PLAY</button>
