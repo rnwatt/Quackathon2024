@@ -1,6 +1,11 @@
 body {
     background-color: #ddd; 
 }
+
+.PLEASE {
+    float: left;
+    margin: 5px;
+}
 .howToButt {
    background-color: #004F2D;
    stroke: none;
@@ -11,7 +16,6 @@ body {
    border-style: none;
    width: 100px;
     height: 50px;
-    margin: 5px;
 }
 
 .howToButt:hover {
@@ -29,17 +33,12 @@ body {
     border-style: none;
     width: 100px;
     height: 50px;
-    margin: 5px;
  }
  
  .resetButt:hover {
      background-color: #04AA6D; /* Green */
      color: white;
    }
-
-#buttons {
-    padding: 30px;
-}
 
 .actionButtons {
     background-color: #05698b;
@@ -51,7 +50,6 @@ body {
     border-style: none;
     width: 100px;
     height: 50px;
-    margin: 5px;
  }
  
  .actionButtons:hover {
