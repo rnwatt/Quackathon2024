@@ -312,8 +312,9 @@
           dataSet.row(banditIndex).long
         );
         console.log(near_bandit_location_array.length);
-        let num_rand =
-          Math.floor(Math.random() * near_bandit_location_array.length) - 1;
+        let num_rand = Math.floor(
+          Math.random() * near_bandit_location_array.length
+        );
         bandStart = num_rand;
       }
 
@@ -380,7 +381,7 @@
               // set next prev row (last)
               previous = index;
               prev_row = dataSet.row(index);
-              // banditMove(bandStart);
+              banditMove(bandStart);
               winCheck();
             }
           }
