@@ -1,0 +1,417 @@
+<div
+  id="anychart-embed-countries-united-kingdom"
+  class="anychart-embed anychart-embed-countries-united-kingdom"
+>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-map.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+  <script src="https://cdn.anychart.com/geodata/2.2.0/countries/united_kingdom/united_kingdom.js"></script>
+  <link rel="stylesheet" href="./style.css" />
+  <style type="text/css">
+    #howTo {
+      position: fixed;
+      display: none;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    #text {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      right: 10%;
+      font-size: 20px;
+      color: white;
+    }
+
+    #actionButtons {
+      display: block;
+    }
+
+    #moveBox {
+      display: none;
+    }
+  </style>
+  <div id="ac_style_countries-united-kingdom" style="display: none">
+    html, body, #container { width: 100%; height: 100%; margin: 0; padding: 0; }
+  </div>
+  <script>
+    (function () {
+      function ac_add_to_head(el) {
+        var head = document.getElementsByTagName("head")[0];
+        head.insertBefore(el, head.firstChild);
+      }
+      function ac_add_link(url) {
+        var el = document.createElement("link");
+        el.rel = "stylesheet";
+        el.type = "text/css";
+        el.media = "all";
+        el.href = url;
+        ac_add_to_head(el);
+      }
+      function ac_add_style(css) {
+        var ac_style = document.createElement("style");
+        if (ac_style.styleSheet) ac_style.styleSheet.cssText = css;
+        else ac_style.appendChild(document.createTextNode(css));
+        ac_add_to_head(ac_style);
+      }
+      ac_add_link(
+        "https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css"
+      );
+      ac_add_style(
+        document.getElementById("ac_style_countries-united-kingdom").innerHTML
+      );
+      ac_add_style(
+        ".anychart-embed-countries-united-kingdom{width:600px;height:450px;}"
+      );
+    })();
+  </script>
+  <div id="container"></div>
+  <div id="howTo" onclick="howToOff()">
+    <div id="text">
+      HOW TO PLAY:<br /><br />
+      The Fish bandit has hit local ATMs, taping fish onto ATMs and making them
+      non-assessable (and smelly!) It's up to you to catch the dastardly devil
+      by following the trail of fish they've left behind.<br /><br />
+      You have a budget of **MONEY AMOUNT HERE** to catch the bandit. You can
+      tell how close the Bandit is to you by the amount of fish taped to local
+      ATMs, the more fish, the closer you are. The game has two phases, action
+      phase and movement phase. <br /><br />
+      ACTION PHASE: Choose between Cleaning up ATMs for **MONEY AMOUNT HERE** or
+      paying **MONEY AMOUNT HERE** to get a hint on where the Bandit will strike
+      next. <br /><br />
+      MOVEMENT PHASE: Choose which city to investigate next, the further the
+      city the more travel will cost. The Bandit will move to the next closest
+      city they haven't visited yet If you move into the city the Bandit is in,
+      or the Bandit is forced to move into you then you win!<br /><br />
+      Click anywhere to return to game
+    </div>
+  </div>
+  <div class="PLEASE">
+    <div id="stats">
+      <h3 id="currCity">Current Location: NULL</h3>
+      <h3 id="cityFish">ATMs with Fish: NULL</h3>
+    </div>
+
+    <button class="howToButt" onclick="howToOn()">HOW TO PLAY</button>
+    <button class="resetButt" onclick="reset()">Reset the Game</button>
+  </div>
+  <script>
+    anychart.onDocumentReady(function () {
+      // create map
+      var map = anychart.map();
+
+      // create data set
+      var dataSet = anychart.data.set([
+        { lat: 56.25, long: -3.75, name: "Perth and Kinross", value: 1 },
+        { lat: 55.95, long: -3.11, name: "Edinburgh", value: 2 },
+        { lat: 55.2, long: -2.07, name: "Northumberland", value: 3 },
+        { lat: 54.17, long: -6.33, name: "Derry", value: 4 },
+        { lat: 54.99, long: -7.31, name: "Derry", value: 5 },
+        { lat: 54.57, long: -2.79, name: "Cumbria", value: 6 },
+        { lat: 51.5, long: -3.57, name: "Bridgend", value: 7 },
+        { lat: 53.48, long: -2.24, name: "Manchester", value: 8 },
+        { lat: 52.41, long: -1.5, name: "Coventry", value: 9 },
+        { lat: 52.13, long: -0.46, name: "Bedford", value: 10 },
+        { lat: 52.07, long: -2.65, name: "Herefordshire", value: 11 },
+        { lat: 51.1, long: -2.92, name: "Somerset", value: 12 },
+        { lat: 53.26, long: -4.42, name: "Anglesey", value: 13 },
+        { lat: 50.41, long: -4.97, name: "Cornwall", value: 14 },
+        { lat: 50.74, long: -2.34, name: "Dorset", value: 15 },
+        { lat: 51.5, long: -0.12, name: "London City", value: 16 },
+        { lat: 52.6, long: 0.88, name: "Norfolk", value: 17 },
+        { lat: 51.27, long: 0.65, name: "Kent", value: 18 },
+        { lat: 52.18, long: 0.97, name: "Suffolk", value: 19 },
+        { lat: 57.7, long: -6.51, name: "Eilean Siar", value: 20 },
+        { lat: 58.93, long: -2.74, name: "Orkney", value: 21 },
+        { lat: 57.45, long: -4.99, name: "Highland", value: 22 },
+        { lat: 55.45, long: -4.62, name: "South Ayrshire", value: 23 },
+        { lat: 53.82, long: -0.43, name: "East Riding of Yorks", value: 24 },
+        { lat: 54.19, long: -1.54, name: "North Yorkshire", value: 25 },
+        { lat: 52.21, long: -3.99, name: "Ceredigion", value: 26 },
+        { lat: 53.05, long: -0.16, name: "Lincolnshire", value: 27 },
+        { lat: 53.1, long: -1.56, name: "Derbyshire", value: 28 },
+        { lat: 51.76, long: -1.24, name: "Oxfordshire", value: 29 },
+        { lat: 50.92, long: -0.46, name: "West Sussex", value: 30 },
+        { lat: 51.05, long: -1.3, name: "Hampshire", value: 31 },
+        { lat: 55.99, long: -5.88, name: "Argyll and Bute", value: 32 },
+        { lat: 58.23, long: -3.75, name: "Wick", value: 33 },
+        { lat: 57.85, long: -4.18, name: "Lybster", value: 34 },
+        { lat: 57.64, long: -3.31, name: "Elgin", value: 35 },
+        { lat: 56.46, long: -2.97, name: "Dundee", value: 36 },
+        { lat: 56.62, long: -3.86, name: "Stirling", value: 37 },
+        { lat: 57.2, long: -3.82, name: "Aviemore", value: 38 },
+        { lat: 55.07, long: -3.6, name: "Dumfries", value: 39 },
+        { lat: 50.57, long: -3.52, name: "Exeter", value: 40 },
+        { lat: 51.01, long: -3.83, name: "South Molton", value: 41 },
+        { lat: 54.59, long: -5.93, name: "Belfast", value: 42 },
+        { lat: 55.07, long: -6.28, name: "Ballymena", value: 43 },
+        { lat: 53.04, long: -3.21, name: "Wrexham", value: 44 },
+      ]);
+
+      var fished = false;
+
+      // set geo data, you can find this map in our geo maps collection
+      // https://cdn.anychart.com/#maps-collection
+      map.geoData(anychart.maps["united_kingdom"]);
+      var series = map.bubble(dataSet);
+      series.fill("black");
+
+      // Haversine
+      function haversine(lat1, lon1, lat2, lon2, isMiles, distance) {
+        function toRad(x) {
+          return (x * Math.PI) / 180;
+        }
+        var R = 6371; // km
+
+        var x1 = lat2 - lat1;
+        var dLat = toRad(x1);
+        var x2 = lon2 - lon1;
+        var dLon = toRad(x2);
+        var a =
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(toRad(lat1)) *
+            Math.cos(toRad(lat2)) *
+            Math.sin(dLon / 2) *
+            Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c;
+
+        if (isMiles) (d /= 1.60934) + 30;
+
+        if (d <= distance) {
+          //console.log(d);
+          return d;
+        } else {
+          return false;
+        }
+      }
+
+      // Match against every other node with haversine
+      function match(index, lat, lon) {
+        let limit = 43;
+        let nearby = [];
+        for (let i = 0; i < limit; i++) {
+          if (i == index) {
+            continue;
+          }
+          if (
+            !haversine(
+              lat,
+              lon,
+              dataSet.row(i).lat,
+              dataSet.row(i).long,
+              true,
+              70
+            )
+          ) {
+            // out of bounds
+          } else {
+            console.log(
+              dataSet.row(i).name,
+              dataSet.row(i).lat,
+              dataSet.row(i).long
+            );
+            nearby.push(i);
+          }
+        }
+        return nearby;
+      }
+
+      // Disable all nodes that are not nearby
+      function enable_points(nearby_array) {
+        let limit = 43;
+        for (let i = 0; i < limit; i++) {
+          if (nearby_array.includes(i)) {
+            dataSet.row(i).fill = "green";
+          } else {
+            dataSet.row(i).fill = "black";
+          }
+        }
+      }
+
+      function getFishStart(index, bandLocation) {
+        return haversine(
+          dataSet.row(index).lat,
+          dataSet.row(index).long,
+          dataSet.row(bandLocation).lat,
+          dataSet.row(bandLocation).long,
+          true,
+          1000
+        );
+      }
+
+      var index;
+      var bandStart;
+      var fishScore;
+
+      function generateBandStart(player) {
+        do {
+          bandStart = Math.floor(Math.random() * 43);
+          if (
+            haversine(
+              dataSet.row(player).lat,
+              dataSet.row(player).long,
+              dataSet.row(bandStart).lat,
+              dataSet.row(bandStart).long,
+              true,
+              1000
+            ) > 300
+          ) {
+            return;
+          }
+        } while (true);
+      }
+      // Turn player start node green
+      function setup() {
+        var playerStart = Math.floor(Math.random() * 43);
+        generateBandStart(playerStart);
+
+        document.getElementById("currCity").innerHTML =
+          "Current Location: " + dataSet.row(playerStart).name;
+        // haversine low = close
+        fishScore = 10 - Math.abs(getFishStart(playerStart, bandStart)) / 100;
+        if (fishScore < 0) {
+          fishScore = 0;
+        }
+        fishScore = Math.floor(fishScore);
+        document.getElementById("cityFish").innerHTML =
+          "ATMs with Fish: " + fishScore;
+
+        let match_array = match(
+          playerStart,
+          dataSet.row(playerStart).lat,
+          dataSet.row(playerStart).long
+        );
+        enable_points(match_array);
+        dataSet.row(playerStart).fill = "red";
+        index = playerStart;
+      }
+
+      function winCheck() {
+        if (fishScore == 10) {
+          document.getElementById("currCity").innerHTML = "You win!";
+          document.getElementById("cityFish").innerHTML = "Have a nice day :)";
+          map.removeAllListeners();
+        }
+      }
+
+      function banditMove(banditIndex) {
+        let near_bandit_location_array = match(
+          banditIndex,
+          dataSet.row(banditIndex).lat,
+          dataSet.row(banditIndex).long
+        );
+        console.log(near_bandit_location_array.length);
+        let num_rand =
+          Math.floor(Math.random() * near_bandit_location_array.length) - 1;
+        bandStart = num_rand;
+      }
+
+      var canMove = true;
+      var previous;
+      var prev_row;
+      var started = false;
+      var lastClick = 0; // prevent event firing twice (for whatever reason why it does)
+      // PLAYER MOVE
+      map.listen("pointClick", function (e) {
+        if (lastClick >= Date.now() + 50) return;
+        lastClick = Date.now();
+        if (!canMove) {
+          canMove = true;
+          return;
+        }
+        if (started) {
+          index = e.iterator.getIndex();
+          started = true;
+        }
+
+        var row = dataSet.row(index);
+        if (row.fillOld) {
+          row.fill = row.fillOld;
+          delete row.fillOld;
+          row.fill = "black";
+        } else {
+          row.fillOld = row.fill;
+          row.fill = "black";
+          console.log("CURRENT: " + index, row.name, row.lat, row.long);
+          if (!started) {
+            started = true;
+            previous = index;
+            prev_row = dataSet.row(index);
+            series.fill("black");
+          } else {
+            // actual stuff
+            if (
+              !haversine(
+                row.lat,
+                row.long,
+                prev_row.lat,
+                prev_row.long,
+                true,
+                70
+              )
+            ) {
+              canMove = false;
+              console.log("Out of bounds!");
+            } else {
+              let match_array = match(index, row.lat, row.long);
+              enable_points(match_array);
+
+              fishScore = 10 - Math.abs(getFishStart(index, bandStart)) / 100;
+              if (fishScore < 0) {
+                fishScore = 0;
+              }
+              fishScore = Math.floor(fishScore);
+              document.getElementById("cityFish").innerHTML =
+                "ATMs with Fish: " + fishScore;
+
+              document.getElementById("currCity").innerHTML =
+                "Current Location: " + dataSet.row(index).name;
+              // set next prev row (last)
+              previous = index;
+              prev_row = dataSet.row(index);
+              // banditMove(bandStart);
+              winCheck();
+            }
+          }
+        }
+        dataSet.row(index, row);
+      });
+
+      map.maxBubbleSize(10);
+
+      //set map container id (div)
+      map.container("container");
+
+      //initiate map drawing
+      setup();
+      map.draw();
+
+      /* */
+      /* END OF MAP FUNCTIONS */
+      /* */
+    });
+
+    function howToOn() {
+      document.getElementById("howTo").style.display = "block";
+    }
+
+    function howToOff() {
+      document.getElementById("howTo").style.display = "none";
+    }
+
+    function reset() {
+      location.reload();
+    }
+  </script>
+</div>

@@ -38,11 +38,11 @@
     //it is 2:30 am, I have no other solutions than put the arrays in every single fucking function. this is so fucking stupid
 
     function setup (){
-      let locations = ["Perth and Kinross", "Edinburgh", "Northumberland", "Derry", "Cumbria", "Bridgend", "Manchester", "Coventry", "Bedford", "Herefordshire", "Somerset", "Anglesey", "Cornwall", "Dorset", "London City", "Norfolk", "Kent", "Suffolk", "Eilean Siar", "Orkney", "Highland", "South Ayrshire", "East Riding of Yorks", "North Yorkshire", "Ceredigion", "Lincolnshire", "Derbyshire", "Oxfordshire", "West Sussex", "Hampshire", "Argyll and Bute"];
+      let locations = ["Perth and Kinross", "Edinburgh", "Northumberland", "Derry", "Cumbria", "Bridgend", "Manchester", "Coventry", "Bedford", "Herefordshire", "Somerset", "Anglesey", "Cornwall", "Dorset", "London City", "Norfolk", "Kent", "Suffolk", "Eilean Siar", "Orkney", "Highland", "South Ayrshire", "East Riding of Yorks", "North Yorkshire", "Ceredigion", "Lincolnshire", "Derbyshire", "Oxfordshire", "West Sussex", "Hampshire", "Argyll and Bute", "Wick", "Lybster", "Elgin", "Dundee", "Stirling", "Aviemore", "Dumfries", "Exeter", "South Molton"];
 
-      let lat = [ 56.55, 55.95, 55.2, 54.17, 54.99, 54.57, 51.5, 53.48, 52.41, 52.13, 52.07, 51.1, 53.26, 50.41, 50.74, 51.5, 52.6, 51.27, 52.18, 57.7, 58.93, 57.45, 55.45, 53.82, 54.19, 52.21, 53.05, 53.1, 51.76, 50.92, 51.05, 55.99];
+      let lat = [ 56.55, 55.95, 55.2, 54.17, 54.99, 54.57, 51.5, 53.48, 52.41, 52.13, 52.07, 51.1, 53.26, 50.41, 50.74, 51.5, 52.6, 51.27, 52.18, 57.7, 58.93, 57.45, 55.45, 53.82, 54.19, 52.21, 53.05, 53.1, 51.76, 50.92, 51.05, 55.99, 58.23, 57.85, 57.64, 56.46, 56.12, 57.2, 55.07, 50.57, 51.01];
   
-      let long = [-3.7, -3.11, -2.07, -6.33, -7.31, -2.79, -3.57, -2.24, -1.5, -0.46, -2.65, -2.92, -4.42, -4.97, -2.34, -0.12, 0.88, 0.97, -6.51, -2.74, -4.99, -4.62, -0.43, -1.54, -3.99, -0.16, -1.56, -1.24, -0.46, -1.3, -5.88]; 
+      let long = [-3.7, -3.11, -2.07, -6.33, -7.31, -2.79, -3.57, -2.24, -1.5, -0.46, -2.65, -2.92, -4.42, -4.97, -2.34, -0.12, 0.88, 0.97, -6.51, -2.74, -4.99, -4.62, -0.43, -1.54, -3.99, -0.16, -1.56, -1.24, -0.46, -1.3, -5.88, -3.75, -4.18, -3.31, -2.97, -3.86, -3.82, -3.6, -3.52, -3.83]; 
 
     var playerStart = Math.floor(Math.random() * 30);
     var bandStart = Math.floor(Math.random() * 30);
@@ -99,11 +99,11 @@ if (firstLoad == 1){
     }
 
 function phaseSwitch (){
-  let locations = ["Perth and Kinross", "Edinburgh", "Northumberland", "Derry", "Cumbria", "Bridgend", "Manchester", "Coventry", "Bedford", "Herefordshire", "Somerset", "Anglesey", "Cornwall", "Dorset", "London City", "Norfolk", "Kent", "Suffolk", "Eilean Siar", "Orkney", "Highland", "South Ayrshire", "East Riding of Yorks", "North Yorkshire", "Ceredigion", "Lincolnshire", "Derbyshire", "Oxfordshire", "West Sussex", "Hampshire", "Argyll and Bute"];
+  let locations = ["Perth and Kinross", "Edinburgh", "Northumberland", "Derry", "Cumbria", "Bridgend", "Manchester", "Coventry", "Bedford", "Herefordshire", "Somerset", "Anglesey", "Cornwall", "Dorset", "London City", "Norfolk", "Kent", "Suffolk", "Eilean Siar", "Orkney", "Highland", "South Ayrshire", "East Riding of Yorks", "North Yorkshire", "Ceredigion", "Lincolnshire", "Derbyshire", "Oxfordshire", "West Sussex", "Hampshire", "Argyll and Bute", "Wick", "Lybster", "Elgin", "Dundee", "Stirling", "Aviemore", "Dumfries", "Exeter", "South Molton"];
 
-  let lat = [ 56.55, 55.95, 55.2, 54.17, 54.99, 54.57, 51.5, 53.48, 52.41, 52.13, 52.07, 51.1, 53.26, 50.41, 50.74, 51.5, 52.6, 51.27, 52.18, 57.7, 58.93, 57.45, 55.45, 53.82, 54.19, 52.21, 53.05, 53.1, 51.76, 50.92, 51.05, 55.99];
-
-    let long = [-3.7, -3.11, -2.07, -6.33, -7.31, -2.79, -3.57, -2.24, -1.5, -0.46, -2.65, -2.92, -4.42, -4.97, -2.34, -0.12, 0.88, 0.97, -6.51, -2.74, -4.99, -4.62, -0.43, -1.54, -3.99, -0.16, -1.56, -1.24, -0.46, -1.3, -5.88];
+  let lat = [ 56.55, 55.95, 55.2, 54.17, 54.99, 54.57, 51.5, 53.48, 52.41, 52.13, 52.07, 51.1, 53.26, 50.41, 50.74, 51.5, 52.6, 51.27, 52.18, 57.7, 58.93, 57.45, 55.45, 53.82, 54.19, 52.21, 53.05, 53.1, 51.76, 50.92, 51.05, 55.99, 58.23, 57.85, 57.64, 56.46, 56.12, 57.2, 55.07, 50.57, 51.01];
+  
+  let long = [-3.7, -3.11, -2.07, -6.33, -7.31, -2.79, -3.57, -2.24, -1.5, -0.46, -2.65, -2.92, -4.42, -4.97, -2.34, -0.12, 0.88, 0.97, -6.51, -2.74, -4.99, -4.62, -0.43, -1.54, -3.99, -0.16, -1.56, -1.24, -0.46, -1.3, -5.88, -3.75, -4.18, -3.31, -2.97, -3.86, -3.82, -3.6, -3.52, -3.83]; 
 
   if (phase == "Action")
   {
@@ -184,8 +184,7 @@ function clean(){
 
 // hint providor 
 function hint() {
-  
-  let lat = [ 56.55, 55.95, 55.2, 54.17, 54.99, 54.57, 51.5, 53.48, 52.41, 52.13, 52.07, 51.1, 53.26, 50.41, 50.74, 51.5, 52.6, 51.27, 52.18, 57.7, 58.93, 57.45, 55.45, 53.82, 54.19, 52.21, 53.05, 53.1, 51.76, 50.92, 51.05, 55.99];
+  let lat = [ 56.55, 55.95, 55.2, 54.17, 54.99, 54.57, 51.5, 53.48, 52.41, 52.13, 52.07, 51.1, 53.26, 50.41, 50.74, 51.5, 52.6, 51.27, 52.18, 57.7, 58.93, 57.45, 55.45, 53.82, 54.19, 52.21, 53.05, 53.1, 51.76, 50.92, 51.05, 55.99, 58.23, 57.85, 57.64, 56.46, 56.12, 57.2, 55.07, 50.57, 51.01];
 
   currMoney = currMoney - 10;
   moneyTrack();
@@ -207,11 +206,9 @@ function hint() {
 
 //movement shit
 function move() {
-  let locations = ["Perth and Kinross", "Edinburgh", "Northumberland", "Derry", "Cumbria", "Bridgend", "Manchester", "Coventry", "Bedford", "Herefordshire", "Somerset", "Anglesey", "Cornwall", "Dorset", "London City", "Norfolk", "Kent", "Suffolk", "Eilean Siar", "Orkney", "Highland", "South Ayrshire", "East Riding of Yorks", "North Yorkshire", "Ceredigion", "Lincolnshire", "Derbyshire", "Oxfordshire", "West Sussex", "Hampshire", "Argyll and Bute"];
-
-  let lat = [ 56.55, 55.95, 55.2, 54.17, 54.99, 54.57, 51.5, 53.48, 52.41, 52.13, 52.07, 51.1, 53.26, 50.41, 50.74, 51.5, 52.6, 51.27, 52.18, 57.7, 58.93, 57.45, 55.45, 53.82, 54.19, 52.21, 53.05, 53.1, 51.76, 50.92, 51.05, 55.99];
-
-    let long = [-3.7, -3.11, -2.07, -6.33, -7.31, -2.79, -3.57, -2.24, -1.5, -0.46, -2.65, -2.92, -4.42, -4.97, -2.34, -0.12, 0.88, 0.97, -6.51, -2.74, -4.99, -4.62, -0.43, -1.54, -3.99, -0.16, -1.56, -1.24, -0.46, -1.3, -5.88];
+  let lat = [ 56.55, 55.95, 55.2, 54.17, 54.99, 54.57, 51.5, 53.48, 52.41, 52.13, 52.07, 51.1, 53.26, 50.41, 50.74, 51.5, 52.6, 51.27, 52.18, 57.7, 58.93, 57.45, 55.45, 53.82, 54.19, 52.21, 53.05, 53.1, 51.76, 50.92, 51.05, 55.99, 58.23, 57.85, 57.64, 56.46, 56.12, 57.2, 55.07, 50.57, 51.01];
+  
+  let long = [-3.7, -3.11, -2.07, -6.33, -7.31, -2.79, -3.57, -2.24, -1.5, -0.46, -2.65, -2.92, -4.42, -4.97, -2.34, -0.12, 0.88, 0.97, -6.51, -2.74, -4.99, -4.62, -0.43, -1.54, -3.99, -0.16, -1.56, -1.24, -0.46, -1.3, -5.88, -3.75, -4.18, -3.31, -2.97, -3.86, -3.82, -3.6, -3.52, -3.83]; 
 
     var ah = document.getElementById("moveOpt");
   var next = ah.value;
