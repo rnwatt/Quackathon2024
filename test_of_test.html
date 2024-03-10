@@ -82,17 +82,11 @@
       The Fish bandit has hit local ATMs, taping fish onto ATMs and making them
       non-assessable (and smelly!) It's up to you to catch the dastardly devil
       by following the trail of fish they've left behind.<br /><br />
-      You have a budget of **MONEY AMOUNT HERE** to catch the bandit. You can
-      tell how close the Bandit is to you by the amount of fish taped to local
-      ATMs, the more fish, the closer you are. The game has two phases, action
-      phase and movement phase. <br /><br />
-      ACTION PHASE: Choose between Cleaning up ATMs for **MONEY AMOUNT HERE** or
-      paying **MONEY AMOUNT HERE** to get a hint on where the Bandit will strike
-      next. <br /><br />
-      MOVEMENT PHASE: Choose which city to investigate next, the further the
-      city the more travel will cost. The Bandit will move to the next closest
-      city they haven't visited yet If you move into the city the Bandit is in,
-      or the Bandit is forced to move into you then you win!<br /><br />
+      You can tell how close the Bandit is to you by the amount of fish taped to
+      local ATMs, the more fish, the closer you are.<br /><br />
+      Choose which city to investigate next (highlighted in green). The Bandit
+      will also be moving around the map as you click. If you move into the city
+      the Bandit is in, you win!<br /><br />
       Click anywhere to return to game
     </div>
   </div>
@@ -305,17 +299,25 @@
         }
       }
 
-      function banditMove(banditIndex) {
+      function banditMove(banditIndex, playerIndex) {
         let near_bandit_location_array = match(
           banditIndex,
           dataSet.row(banditIndex).lat,
           dataSet.row(banditIndex).long
         );
-        console.log(near_bandit_location_array.length);
+        let repeat = true;
         let num_rand = Math.floor(
           Math.random() * near_bandit_location_array.length
         );
-        bandStart = num_rand;
+
+        do {
+          if (near_bandit_location_array[num_rand] == playerIndex) {
+            continue;
+          }
+          repeat = false;
+        } while (repeat);
+        bandStart = near_bandit_location_array[num_rand];
+        console.log("BANDIT LOCATION: " + dataSet.row(bandStart).name);
       }
 
       var canMove = true;
@@ -381,8 +383,8 @@
               // set next prev row (last)
               previous = index;
               prev_row = dataSet.row(index);
-              banditMove(bandStart);
               winCheck();
+              banditMove(bandStart, index);
             }
           }
         }
